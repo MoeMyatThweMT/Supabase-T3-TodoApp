@@ -237,8 +237,12 @@ export function CalendarView() {
                         )}
                         {todo.subtasks && todo.subtasks.length > 0 && (
                           <div className="mt-2 text-xs text-gray-400">
-                            {todo.subtasks.filter((st) => st.completed).length}/
-                            {todo.subtasks.length} subtasks completed
+                            {
+                              todo.subtasks.filter(
+                                (st: { completed: boolean }) => st.completed,
+                              ).length
+                            }
+                            /{todo.subtasks.length} subtasks completed
                           </div>
                         )}
                       </div>
