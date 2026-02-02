@@ -437,20 +437,26 @@ export function TodoList() {
                           <p className="text-sm font-medium text-gray-700">
                             Subtasks:
                           </p>
-                          {todo.subtasks.map((subtask) => (
-                            <div
-                              key={subtask.id}
-                              className="flex items-center gap-2 text-sm text-gray-600"
-                            >
-                              <span
-                                className={
-                                  subtask.completed ? "line-through" : ""
-                                }
+                          {todo.subtasks.map(
+                            (subtask: {
+                              id: string;
+                              title: string;
+                              completed: boolean;
+                            }) => (
+                              <div
+                                key={subtask.id}
+                                className="flex items-center gap-2 text-sm text-gray-600"
                               >
-                                • {subtask.title}
-                              </span>
-                            </div>
-                          ))}
+                                <span
+                                  className={
+                                    subtask.completed ? "line-through" : ""
+                                  }
+                                >
+                                  • {subtask.title}
+                                </span>
+                              </div>
+                            ),
+                          )}
                         </div>
                       )}
                       {todo.image_url && (
