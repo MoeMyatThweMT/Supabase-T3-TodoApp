@@ -69,10 +69,10 @@ export function StatsView() {
   }).length;
 
   // Activity by day of week
-  const activityByDay = [0, 0, 0, 0, 0, 0, 0];
+  const activityByDay = Array.from({ length: 7 }, () => 0);
   todos.forEach((todo) => {
     const day = new Date(todo.created_at).getDay();
-    activityByDay[day]++;
+    activityByDay[day] = (activityByDay[day] ?? 0) + 1;
   });
 
   const maxActivity = Math.max(...activityByDay, 1);
