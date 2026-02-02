@@ -36,7 +36,10 @@ export function StatsView() {
       const checkDate = new Date(currentDate);
       checkDate.setHours(0, 0, 0, 0);
 
-      const completedDate = new Date(completedDates[i]);
+      const completedStr = completedDates[i];
+      if (!completedStr) continue; // skip if missing/undefined
+
+      const completedDate = new Date(completedStr);
       completedDate.setHours(0, 0, 0, 0);
 
       if (checkDate.getTime() === completedDate.getTime()) {
