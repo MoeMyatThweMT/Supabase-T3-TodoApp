@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import { api } from "~/trpc/react";
 import { createClient } from "~/lib/supabase/client";
-import { useRouter } from "next/navigation";
 import type { RealtimeChannel } from "@supabase/supabase-js";
 
 interface Todo {
@@ -25,7 +24,6 @@ interface Todo {
 }
 
 export function TodoList() {
-  const router = useRouter();
   const supabase = createClient();
   const utils = api.useUtils();
 
@@ -117,11 +115,6 @@ export function TodoList() {
       }
     };
   }, [supabase, utils]);
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    router.push("/login");
-  };
 
   const handleCreateTodo = (e: React.FormEvent) => {
     e.preventDefault();
@@ -233,14 +226,11 @@ export function TodoList() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8">
       {/* Header */}
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8">
         <h1 className="text-4xl font-bold text-white">My Todos</h1>
-        <button
-          onClick={handleSignOut}
-          className="rounded-md bg-red-600 px-4 py-2 text-white hover:bg-red-700"
-        >
-          Sign Out
-        </button>
+        <p className="mt-2 text-gray-400">
+          Manage your tasks and stay organized
+        </p>
       </div>
 
       {/* Create Todo Form */}

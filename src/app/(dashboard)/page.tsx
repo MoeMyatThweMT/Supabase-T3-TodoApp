@@ -15,9 +15,7 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
-        <TodoList />
-      </main>
+      <TodoList />
     </HydrateClient>
   );
 }
